@@ -112,10 +112,15 @@
 				pg_free_result($result);
 
 				# get the last backup time from that audit log
-				$query = "select * from $auditTableName
-					where userid = 1
-					and details = 'Starting System Backup'
-					order by audittime desc
+				# this is split into two queries because the text filter is slow otherwise
+				$query = "select * from (
+						select * from auditlog_201906
+							where userid = 1
+							--and details = 'Starting System Backup'
+							order by audittime desc
+							limit 10
+						) as asdf
+					where details = 'Starting System Backup'
 					limit 1";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 				$line = pg_fetch_array($result, null, PGSQL_ASSOC);
