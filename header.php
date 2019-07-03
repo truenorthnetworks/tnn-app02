@@ -114,7 +114,7 @@
 				# get the last backup time from that audit log
 				# this is split into two queries because the text filter is slow otherwise
 				$query = "select * from (
-						select * from auditlog_201906
+						select * from $auditTableName
 							where userid = 1
 							--and details = 'Starting System Backup'
 							order by audittime desc
