@@ -67,19 +67,20 @@
 
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item">
-				<a class="nav-link" href="templates.php">Templates</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="tasks.php">Scheduled tasks</a>
-			</li>
-			<!-- <li class="nav-item">
-				<a class="nav-link" href="filters.php">Filters</a>
-			</li> -->
+			<?php 
+				$pages = [
+					"templates.php" => "Templates",
+					"tasks.php" => "Scheduled tasks",
+					#"filters.php" => "Filters",
+					"mspbackup.php" => "MSP Backup",
+				];
+				foreach ($pages as $file => $name) {
+					echo "<li class='nav-item'>
+							  <a class='nav-link' href='$file'>$name</a>
+						  </li>";
+				}
+			?>
 			<!--
-			<li class="nav-item">
-				<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
