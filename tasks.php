@@ -1,5 +1,3 @@
-<?php include('CronSchedule.php'); ?>
-
 <?php include('header.php'); ?>
 
 <main role="main" class="container-fluid">
@@ -44,8 +42,6 @@
 						foreach ($line as $col_value) {
 							// if we're printing the cron string
 							if ($col_value === $line['value']) {
-								//$schedule = CronSchedule::fromCronString($col_value);
-								//echo "<td>$schedule->asNaturalLanguage()</td>";
 								foreach (explode(" ", $col_value) as $i) {
 									echo "<td>$i</td>";
 								}
