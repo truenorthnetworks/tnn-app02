@@ -73,6 +73,8 @@
 					"tasks.php" => "Scheduled tasks",
 					#"filters.php" => "Filters",
 					"mspbackup.php" => "MSP Backup",
+					"psa.php" => "PSA",
+					"probenotification" => "Probe notifications",
 				];
 				foreach ($pages as $file => $name) {
 					echo "<li class='nav-item'>
