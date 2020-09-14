@@ -74,7 +74,7 @@
 					#"filters.php" => "Filters",
 					"mspbackup.php" => "MSP Backup",
 					"psa.php" => "PSA",
-					"probenotification" => "Probe notifications",
+					"probenotification.php" => "Probe notifications",
 				];
 				foreach ($pages as $file => $name) {
 					echo "<li class='nav-item'>
@@ -101,7 +101,7 @@
 		-->
 		<span class="text-light">
 			<?php 
-				$dbconn = pg_connect($tnnapp01)
+				$dbconn = pg_connect($tnnapp05)
 					or die('Could not connect: ' . pg_last_error());
 
 				# get the most recent audit log table

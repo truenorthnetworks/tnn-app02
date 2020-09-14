@@ -12,7 +12,7 @@
 			<tbody>
 				<?php
 					// Connecting, selecting database
-					$dbconn = pg_connect($tnnapp01)
+					$dbconn = pg_connect($tnnapp05)
 						or die('Could not connect: ' . pg_last_error());
 
 					// Performing SQL query
