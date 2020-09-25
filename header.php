@@ -127,8 +127,15 @@
 					limit 1";
 				$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 				$line = pg_fetch_array($result, null, PGSQL_ASSOC);
+				$timestamp = DateTimeImmutable::createFromFormat('Y-m-d H:i:s.uP', $line['audittime']);
 				# print the timestamp from this backup (left of the decimal in e.g. "2019-05-31 23:30:02.076524-04")
-				echo '<span class="text-muted">Data from ' . explode('.', $line['audittime'])[0] . '</span>';
+				# make sure the data is recent; if not, display with warning
+				if ($timestamp->diff(new DateTimeImmutable('now'))->h < 48) {
+					echo '<span class="text-muted">Data from ' . $timestamp->format('Y-m-d H:i:s') . '</span>';
+				} else {
+					echo '<span class="text-warning">⚠ Data from ' . $timestamp->format('Y-m-d H:i:s') . '</span>';
+				}
+				// print_r($timestamp->diff(new DateTimeImmutable('now'))->h);
 				pg_free_result($result);
 	
 				pg_close($dbconn);
